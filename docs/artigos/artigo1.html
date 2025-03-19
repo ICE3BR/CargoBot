@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Desenvolvimento do CargoBot</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/styles.css"/>
 </head>
 <body>
     <header>
@@ -18,11 +18,92 @@
     </header>
     
     <section class="artigo">
-        <h1>Desenvolvimento do CargoBot</h1>
-        <p>Como iniciamos o projeto e os primeiros desafios enfrentados.</p>
-        <img src="../assets/images/artigo1.jpg" alt="Imagem do sensor">
-        <p>Esses sensores detectam a linha preta sobre um fundo branco e enviam sinais ao microcontrolador, que ajusta os motores para manter o robô no percurso correto.</p>
-        <p>Além disso, estamos estudando a possibilidade de integrar sensores ultrassônicos para evitar colisões e melhorar a eficiência do sistema.</p>
+        <h1>CargoBot: Um Mini Robô AGV para Automação Logística</h1>
+        
+        <h2>Introdução: O que são os Robôs AGV?</h2>
+        <p>Os <strong>AGVs (Automated Guided Vehicles)</strong> são robôs autônomos projetados para transporte de cargas e materiais sem a necessidade de intervenção humana direta...</p>
+        
+        <h3>Benefícios dos AGVs</h3>
+        <ul>
+            <li><strong>Redução de custos operacionais:</strong> Minimiza a necessidade de operadores humanos para transporte interno.</li>
+            <li><strong>Aumento da eficiência e produtividade:</strong> Trabalham 24/7 sem interrupções.</li>
+            <li><strong>Precisão e segurança:</strong> Evitam colisões e reduzem erros logísticos.</li>
+            <li><strong>Flexibilidade:</strong> Podem ser programados para diferentes tarefas de transporte.</li>
+            <li><strong>Redução de desperdício:</strong> Movimentam itens de forma otimizada, evitando danos e desperdício de materiais.</li>
+        </ul>
+        
+        <h2>CargoBot: Criando um Mini AGV com Arduino</h2>
+        <p>Embora os AGVs industriais sejam sofisticados e caros, é possível construir uma versão em <strong>miniatura</strong> usando <strong>Arduino</strong>...</p>
+        
+        <h2>Prototipagem e Conexões</h2>
+        <h3>Passos para a montagem:</h3>
+        <ol>
+            <li><strong>Fixação da estrutura:</strong> A base do robô pode ser feita de acrílico, madeira ou até mesmo papelão resistente...</li>
+            <li><strong>Instalação dos motores:</strong> Os motores DC são posicionados nas laterais do robô...</li>
+            <li><strong>Conexão do driver de motor ao Arduino:</strong> Esse módulo permite que a placa Arduino controle a velocidade e direção dos motores.</li>
+            <li><strong>Posicionamento dos sensores infravermelhos:</strong> Os sensores devem ser fixados na parte inferior do robô...</li>
+            <li><strong>Alimentação do sistema:</strong> Uma bateria recarregável é utilizada para fornecer energia ao circuito.</li>
+        </ol>
+        
+        <h2>Componentes do CargoBot e Suas Funções</h2>
+        <h3>1. Placa Arduino (Cérebro do Robô)</h3>
+        <p>A <strong>placa Arduino</strong> é o controlador principal do robô...</p>
+        
+        <h3>2. Sensores Infravermelhos (Navegação por Linha)</h3>
+        <p>Os <strong>sensores infravermelhos (IR)</strong> detectam a presença ou ausência de uma linha no solo...</p>
+        
+        <h3>3. Motores DC (Movimentação)</h3>
+        <p>Os <strong>motores de corrente contínua (DC)</strong> são responsáveis pela propulsão do robô...</p>
+        
+        <h3>4. Driver de Motor (Controle de Energia)</h3>
+        <p>O <strong>driver de motor</strong> funciona como um intermediário entre o Arduino e os motores...</p>
+        
+        <h3>5. Estrutura Física (Suporte dos Componentes)</h3>
+        <p>A <strong>estrutura do robô</strong> pode ser feita com materiais leves e resistentes...</p>
+        
+        <h3>6. Rodas e Suporte (Locomoção)</h3>
+        <p>As <strong>rodas</strong> acopladas aos motores permitem o deslocamento...</p>
+        
+        <h3>7. Fonte de Alimentação (Bateria e Eficiência Energética)</h3>
+        <p>O <strong>sistema de alimentação</strong> pode ser feito com <strong>baterias recarregáveis</strong>...</p>
+        
+        <h2>Código do CargoBot: Como o Robô Funciona?</h2>
+        <h3>Exemplo de código básico para seguir linha:</h3>
+        <pre><code>
+        #define SENSOR_ESQ 2
+        #define SENSOR_DIR 3
+        #define MOTOR_ESQ 5
+        #define MOTOR_DIR 6
+
+        void setup() {
+            pinMode(SENSOR_ESQ, INPUT);
+            pinMode(SENSOR_DIR, INPUT);
+            pinMode(MOTOR_ESQ, OUTPUT);
+            pinMode(MOTOR_DIR, OUTPUT);
+        }
+
+        void loop() {
+            int esq = digitalRead(SENSOR_ESQ);
+            int dir = digitalRead(SENSOR_DIR);
+
+            if (esq == LOW && dir == LOW) {
+                analogWrite(MOTOR_ESQ, 150);
+                analogWrite(MOTOR_DIR, 150);
+            } else if (esq == HIGH && dir == LOW) {
+                analogWrite(MOTOR_ESQ, 100);
+                analogWrite(MOTOR_DIR, 150);
+            } else if (esq == LOW && dir == HIGH) {
+                analogWrite(MOTOR_ESQ, 150);
+                analogWrite(MOTOR_DIR, 100);
+            } else {
+                analogWrite(MOTOR_ESQ, 0);
+                analogWrite(MOTOR_DIR, 0);
+            }
+        }
+        </code></pre>
+        
+        <h2>Conclusão</h2>
+        <p>Os <strong>AGVs revolucionaram a automação logística</strong>, e o projeto CargoBot é uma excelente forma de entender seus princípios básicos...</p>
     </section>
     
     <footer>
